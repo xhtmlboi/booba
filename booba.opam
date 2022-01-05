@@ -1,0 +1,47 @@
+opam-version: "2.0"
+version: "dev"
+synopsis: "A turnkey static blog generator"
+maintainer: "xhtmlboi@gmail.com"
+authors: [ "The XHTMLBoy <xhtmlboi@gmail.com>" ]
+
+description: """
+A template to quickly bootstrap a static blog
+generated with YOCaml. The name of the project
+is quite simple, as for Hugo and Zola, it is
+common to choose the name of a poet for a blog generator
+which restricts the freedom of construction."""
+
+license: "MIT"
+tags: [ "static" "blog" "generator" "yocaml" "preface" ]
+homepage: "https://github.com/xhtmlboi/booba"
+dev-repo: "git://github.com/xhtmlboi/booba.git"
+bug-reports: "https://github.com/xhtmlboi/booba/issues"
+
+build: [
+  [ "dune" "subst" ]
+  [ "dune" "build" "-p" name "-j" jobs ]
+  [ "dune" "runtest" "-p" name ] {with-test}
+  [ "dune" "build" "@doc" "-p" name ] {with-doc}
+]
+
+depends: [
+  "ocaml" { >= "4.11.1" }
+  "dune" { >= "2.8" }
+  "preface" { >= "0.1.0" }
+  "logs" {>= "0.7.0" }
+  "cmdliner" { >= "1.0.0"}
+  "odoc" {with-doc}
+  "yocaml" {pinned}
+  "yocaml_unix" {pinned}
+  "yocaml_yaml" {pinned}
+  "yocaml_markdown" {pinned}
+  "yocaml_jingoo" {pinned}
+]
+
+pin-depends: [
+  ["yocaml.dev" "git://github.com/xhtmlboi/yocaml.git"]
+  ["yocaml_unix.dev" "git://github.com/xhtmlboi/yocaml.git"]
+  ["yocaml_yaml.dev" "git://github.com/xhtmlboi/yocaml.git"]
+  ["yocaml_markdown.dev" "git://github.com/xhtmlboi/yocaml.git"]
+  ["yocaml_jingoo.dev" "git://github.com/xhtmlboi/yocaml.git"]
+]
