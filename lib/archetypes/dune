@@ -1,0 +1,5 @@
+(library
+ (name archetypes)
+ (package booba)
+ (synopsis "Set of archetypes of a Booba blog.")
+ (libraries preface yocaml))
