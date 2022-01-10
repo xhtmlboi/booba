@@ -1,0 +1,4 @@
+(library
+ (name quotes)
+ (package booba)
+ (synopsis "The heart of this software. Allows you to have a punchline from Booba."))

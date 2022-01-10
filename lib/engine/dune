@@ -1,0 +1,5 @@
+(library
+ (name engine)
+ (package booba)
+ (synopsis "The engine of a website generating using Booba.")
+ (libraries preface yocaml archetypes))
