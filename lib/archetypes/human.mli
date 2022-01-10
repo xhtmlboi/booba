@@ -35,4 +35,9 @@ val from
   -> 'a
   -> t Yocaml.Validate.t
 
+val from_list
+  :  (module Yocaml.Metadata.VALIDABLE with type t = 'a)
+  -> 'a
+  -> t list Yocaml.Validate.t
+
 val inject : (module Yocaml.Key_value.DESCRIBABLE with type t = 'a) -> t -> 'a

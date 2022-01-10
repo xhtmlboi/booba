@@ -87,3 +87,8 @@ let inject
       ; "links", list $ List.map (Link.inject (module D)) links
       ])
 ;;
+
+let from_list (type a) (module Validable : Metadata.VALIDABLE with type t = a)
+  =
+  Validable.list_of $ from (module Validable)
+;;

@@ -8,11 +8,10 @@ type t =
   }
 
 let make page_title page_desc page_authors page_tags =
-  let open Preface.Fun.Infix in
   { page_title
   ; page_desc
   ; page_authors
-  ; page_tags = List.map $ String.trim % String.lowercase_ascii $ page_tags
+  ; page_tags = Helper.map_tags page_tags
   }
 ;;
 
@@ -35,13 +34,6 @@ let dmp ppf { page_title; page_desc; page_authors; page_tags } =
     ]
 ;;
 
-let authors_from
-    (type a)
-    (module Validable : Metadata.VALIDABLE with type t = a)
-  =
-  Validable.list_of $ Human.from (module Validable)
-;;
-
 let from (type a) (module Validable : Metadata.VALIDABLE with type t = a) =
   Validable.object_and (fun obj ->
       let open Validable in
@@ -51,10 +43,11 @@ let from (type a) (module Validable : Metadata.VALIDABLE with type t = a) =
       <*> optional_assoc string "page_desc" obj
       <*> optional_assoc_or
             ~default:[]
-            (authors_from (module Validable))
+            (Human.from_list (module Validable))
             "page_authors"
             obj
-      <*> optional_assoc_or ~default:[] (list_of string) "page_tags" obj)
+      <*> (optional_assoc_or ~default:[] (list_of string) "page_tags" obj
+          >|= Helper.map_tags))
 ;;
 
 let inject

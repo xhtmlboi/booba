@@ -1,0 +1,18 @@
+main_title: My awesome blog
+main_desc:
+  You are on a website dedicated to the enthusiasts of (valid) XHTML, and of beautiful mechanics.
+main_authors:
+  - nickname: The <XHTMLBoy />
+    mail: xhtmlboi@gmail.com
+    links:
+      - name: homepage
+        url: https://xhtmlboi.github.io
+main_tags:
+  - Java
+  - Champion
+  - Booba
+  - YOCaml
+repository:
+  hub: github
+  base_url: github.com/xhtmlboi/booba
+  branch: main

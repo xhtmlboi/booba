@@ -1,5 +1,10 @@
 (** Various helper for archetypes definition. *)
 
+(** {1 Dealing with metadata} *)
+
+val trim_lowercase : string -> string
+val map_tags : string list -> string list
+
 (** {1 Pretty-printer helper} *)
 
 (** Existential for hidding pp details*)

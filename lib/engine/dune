@@ -2,4 +2,4 @@
  (name engine)
  (package booba)
  (synopsis "The engine of a website generating using Booba.")
- (libraries preface yocaml archetypes))
+ (libraries preface yocaml archetypes yocaml_yaml yocaml_markdown yocaml_jingoo))

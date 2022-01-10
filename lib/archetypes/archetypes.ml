@@ -2,6 +2,7 @@
 
     Describes items that need to be analysed or injected. *)
 
+module Config = Config
 module Page = Page
 
 (** {1 Components}
@@ -11,6 +12,7 @@ module Page = Page
 
 module Link = Link
 module Human = Human
+module Source_hub = Source_hub
 
 (** {1 Misc}
 

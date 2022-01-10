@@ -1,3 +1,6 @@
+let trim_lowercase x = String.trim (String.lowercase_ascii x)
+let map_tags = List.map trim_lowercase
+
 type ex_pp = PP : (string * 'a * (Format.formatter -> 'a -> unit)) -> ex_pp
 
 let pp_field key value pp = PP (key, value, pp)
