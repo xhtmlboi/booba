@@ -8,6 +8,7 @@ type t = private
   ; page_desc : string option
   ; page_authors : Human.t list
   ; page_tags : string list
+  ; config : Config.t
   }
 
 (** {1 Helpers} *)
@@ -15,6 +16,7 @@ type t = private
 val make : string option -> string option -> Human.t list -> string list -> t
 val equal : t -> t -> bool
 val dmp : Format.formatter -> t -> unit
+val attach_config : t -> Config.t -> t
 
 (** {1 Injection/Projection} *)
 
@@ -23,4 +25,12 @@ val from
   -> 'a
   -> t Yocaml.Validate.t
 
-val inject : (module Yocaml.Key_value.DESCRIBABLE with type t = 'a) -> t -> 'a
+val from_string
+  :  (module Yocaml.Metadata.VALIDABLE)
+  -> string option
+  -> t Yocaml.Validate.t
+
+val inject
+  :  (module Yocaml.Key_value.DESCRIBABLE with type t = 'a)
+  -> t
+  -> (string * 'a) list

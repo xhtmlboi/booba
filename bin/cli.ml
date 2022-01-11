@@ -5,9 +5,12 @@ type common_option =
   { theme : string option
   ; target : string option
   ; subfolder : string option
+  ; config : string option
   }
 
-let make_common_option theme target subfolder = { theme; target; subfolder }
+let make_common_option theme target subfolder config =
+  { theme; target; subfolder; config }
+;;
 
 let common_option_desc =
   let open Cmdliner in
@@ -58,7 +61,21 @@ let common_option_desc =
     in
     Arg.(value & opt (some string) None & arg)
   in
-  Term.(const make_common_option $ theme $ target $ subfolder)
+  let config =
+    let doc =
+      Format.asprintf
+        "The path of the global configuration file (default: %s)."
+        Config.default_config_file
+    in
+    let arg =
+      Arg.info
+        ~doc
+        ~docs
+        [ "config"; "config-file"; "configuration"; "c"; "C" ]
+    in
+    Arg.(value & opt (some string) None & arg)
+  in
+  Term.(const make_common_option $ theme $ target $ subfolder $ config)
 ;;
 
 let man =

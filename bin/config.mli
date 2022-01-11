@@ -21,3 +21,6 @@ val default_port : int
 (** Defines the theme to be used (by default). A theme is defined in the
     [themes/] directory. *)
 val default_theme : string
+
+(** The default configuration file. *)
+val default_config_file : Yocaml.Filepath.t

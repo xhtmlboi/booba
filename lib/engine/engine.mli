@@ -1,7 +1,9 @@
 module Context = Context
 
-(** Copy CSS files into the target (taking account of themes using [ctx].) *)
-val copy_css : Context.t -> unit Yocaml.t
-
-(** Copy Images files into the target (taking account of themes using [ctx].) *)
-val copy_images : Context.t -> unit Yocaml.t
+module Configure
+    (V : Yocaml.Metadata.VALIDABLE)
+    (R : Yocaml.Metadata.RENDERABLE) : sig
+  val copy_css : Context.t -> unit Yocaml.t
+  val copy_images : Context.t -> unit Yocaml.t
+  val build_page : Context.t -> unit Yocaml.t
+end

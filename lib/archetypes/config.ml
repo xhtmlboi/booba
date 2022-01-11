@@ -17,6 +17,8 @@ let make main_title main_desc main_authors main_tags repository =
   }
 ;;
 
+let neutral = make None None [] [] None
+
 let equal a b =
   Option.equal String.equal a.main_title b.main_title
   && Option.equal String.equal a.main_desc b.main_desc

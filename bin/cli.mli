@@ -2,6 +2,7 @@ type common_option =
   { theme : string option
   ; target : string option
   ; subfolder : string option
+  ; config : string option
   }
 
 val build

@@ -18,6 +18,7 @@ val make
   -> Source_hub.t option
   -> t
 
+val neutral : t
 val equal : t -> t -> bool
 val dmp : Format.formatter -> t -> unit
 
